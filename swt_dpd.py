@@ -91,6 +91,24 @@ def binary_search(arr,key):
             low=mid+1                   
     return -1  #! what does it mean if it returns -1???
 
+# a new search function to assign number to devices
+# binary_search(pts_list,(473254.7048875272, 316920.11227772594)), result 100
+# pts_list data structure: [(145, (472624.4392709403, 315137.94856406614)), (120, (472625.2733829411, 315240.29493216146))]
+def binary_search(arr,key):
+    low=0 #! index control
+    high=len(arr)-1 #! index control
+    while (low<=high): #! index control
+        mid=(low+high)//2 #! two division signs? yes
+        a1=arr[mid][1] #! use index value from mid variable assignment
+        a2=key
+        if abs(a1[0]-a2[0])<0.1:#x distance less than 0.1, the points with x distance less than 0.1 are all replaced
+            return mid
+        elif a2[0]<a1[0]:
+            high=mid-1
+        elif a2[0]>a1[0]:
+            low=mid+1                   
+    return -1
+
 #assigns every node a number and associates device ID with it
 def convert_pt(devices,plist):
     pt_n={}
